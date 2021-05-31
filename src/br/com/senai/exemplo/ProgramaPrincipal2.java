@@ -1,4 +1,4 @@
-package br.com.senai;
+package br.com.senai.exemplo;
 
 public class ProgramaPrincipal2 {
 	public static void main(String[] args) {
