@@ -1,31 +1,43 @@
 package br.com.senai.pessoa;
 
-public class Endereco {
+public class Endereco extends Cidade {
+
 	
 	//ATRIBUTOS
-	private String cidade;
-	private String estado;
-	private String pais;
+	private String rua;
+	private String bairro;
+	private int numero;
+	private String complemento;
 	
 	//METODOS
-	public String getCidade() {
-		return cidade;
+	
+	public String getRua() {
+		return rua;
 	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+	public void setRua(String rua) {
+		this.rua = rua;
 	}
-	public String getEstado() {
-		return estado;
+	public String getBairro() {
+		return bairro;
 	}
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
-	public String getPais() {
-		return pais;
+	public int getNumero() {
+		return numero;
 	}
-	public void setPais(String pais) {
-		this.pais = pais;
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	public String getComplemento() {
+		return complemento;
+	}
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 	
 	
 }
+	
+	
+	
