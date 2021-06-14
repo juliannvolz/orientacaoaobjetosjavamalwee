@@ -3,6 +3,8 @@ package br.com.senai.pessoa;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.senai.endereco.Endereco;
+
 public class PessoaController {
 	
 	private Scanner tec;
@@ -20,6 +22,8 @@ public class PessoaController {
 		System.out.println("\n---------- MENU ------------");
 		System.out.println("|1) Cadastrar pessoa          ");
 		System.out.println("|2) Listar pessoas cadastradas");
+		System.out.println("|3) Cadastrar produtos");
+		System.out.println("|4) Listar produtos");
 		System.out.println("|9) Sair do sistema           ");
 		System.out.println("------------------------------");
 	}
