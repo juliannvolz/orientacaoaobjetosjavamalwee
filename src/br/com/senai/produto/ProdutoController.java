@@ -16,6 +16,7 @@ private Scanner tec;
 
 	public Produto cadastrarProduto() {
 		Produto produto = new Produto();
+		
 		System.out.println("--- CADASTRAR PRODUTO ---");
 		System.out.print("Informe o nome do produto: ");
 		produto.setNomeDoProduto(tec.next());
@@ -30,6 +31,12 @@ private Scanner tec;
 	}
 	
 	public List<Produto> listarProduto(List<Produto> produtos) {
+		
+		if(produtos.isEmpty()) {
+			System.out.println("Não possui produtos para listar.");
+			return null;
+		}
+		
 		System.out.println("---------------- PRODUTOS CADASTRADOS -------------------");
 		
 		System.out.printf("| %2s | %10s | %4s | %4s | %4s |\n",
@@ -37,7 +44,7 @@ private Scanner tec;
 		
 		for(int i = 0; i < produtos.size(); i++) {
 			System.out.printf("| %2d | %10s |R$ %12.2f | %10d |R$ %9.2f |\n",
-			i,
+			i + 1,
 			produtos.get(i).getNomeDoProduto(),
 			produtos.get(i).getValorUnitarioDoProduto(),
 			produtos.get(i).getQuantidadeDoProduto(),
@@ -52,8 +59,12 @@ private Scanner tec;
 		Produto produto = new Produto();
 		listarProduto(produtos);
 		
+		if(produtos.isEmpty()) {
+			return null;
+		}
+		
 		System.out.println("Informe o Id do produto para editar: ");
-		int iDProduto = tec.nextInt();
+		int iDProduto = tec.nextInt() - 1;
 		
 		System.out.println("1) Nome do produto");
 		System.out.println("2) Quantidade de produto");
@@ -103,6 +114,27 @@ private Scanner tec;
 		
 		
 		return produtos;
+	}
+	
+	public void excluirProduto(List<Produto> produtos) {
+		
+		listarProduto(produtos);
+		
+		if(produtos.isEmpty()) {
+			return;
+		}
+		
+		System.out.println("--- EXCLUIR PRODUTO ---");
+		
+		System.out.print("Informe o Id do produto para excluir: ");
+		int idProduto = tec.nextInt() - 1;
+		
+		if(produtos.size() < idProduto) {
+			System.out.println("Produto não cadastrado");
+			return;
+		}
+		
+		produtos.remove(idProduto);
 	}
 	
 }

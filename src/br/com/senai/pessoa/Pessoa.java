@@ -40,6 +40,10 @@ public class Pessoa extends Endereco {
 	public void setAltura(double altura) {
 		this.altura = altura;
 	}
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 	

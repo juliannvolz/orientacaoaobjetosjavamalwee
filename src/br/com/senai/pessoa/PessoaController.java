@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.senai.endereco.Endereco;
+import br.com.senai.produto.Produto;
 
 public class PessoaController {
 	
@@ -25,6 +26,9 @@ public class PessoaController {
 		System.out.println("|3) Cadastrar produtos");
 		System.out.println("|4) Listar produtos");
 		System.out.println("|5) Editar produto");
+		System.out.println("|6) Excluir produto");
+		System.out.println("|7) Editar pessoa");
+		System.out.println("|8) Excluir pessoa");
 		System.out.println("|9) Sair do sistema           ");
 		System.out.println("------------------------------");
 	}
@@ -79,13 +83,20 @@ public class PessoaController {
 	}
 	
 	public List<Pessoa> listarPessoas(List<Pessoa> pessoas) {
+		
+		if(pessoas.isEmpty()) {
+			System.out.println("Não possui dados para listar.");
+			return null;
+		}
+		
 		System.out.println("--------------- PESSOAS CADASTRADAS ------------");
 		
-		System.out.printf("| %20s | %4s | %5s | %6s | %5s | %5s | %10s | %5s | %10s | %10s | %10s | %5s | %10s |\n", 
-				"Nome", "Ano", "Idade", "Altura", "País", "Sigla País", "Estado", "Sigla Estado", "Cidade", "Bairro", "Rua", "Número", "Complemento" );
+		System.out.printf("| %2s | %20s | %4s | %5s | %6s | %5s | %5s | %10s | %5s | %10s | %10s | %10s | %5s | %10s |\n", 
+				"Id","Nome", "Ano", "Idade", "Altura", "País", "Sigla País", "Estado", "Sigla Estado", "Cidade", "Bairro", "Rua", "Número", "Complemento" );
 		
 		for(int i = 0; i < pessoas.size(); i++) {
-			System.out.printf("| %20s | %4d | %5d | %6.2f | %5s | %5s | %10s | %5s | %10s | %10s | %10s | %5s | %10s |\n",
+			System.out.printf("| %2d | %20s | %4d | %5d | %6.2f | %5s | %5s | %10s | %5s | %10s | %10s | %10s | %5s | %10s |\n",
+					i,
 					pessoas.get(i).getNome(),
 					pessoas.get(i).getAnoDeNascimento(),
 					pessoas.get(i).getIdade(),
@@ -108,5 +119,117 @@ public class PessoaController {
 		Endereco endereco = new Endereco();	
 		return endereco;
 	}
+	public List<Pessoa> editarPessoa(List<Pessoa> pessoas) {
+		
+		Pessoa pessoa = new Pessoa();
+		listarPessoas(pessoas);
+		
+		if(pessoas.isEmpty()) {
+			return null;
+		}
+		
+		System.out.println("Informe o Id da pessoa para editar: ");
+		int iDPessoa = tec.nextInt();
+		
+		System.out.println("1) Nome da pessoa");
+		System.out.println("2) Ano de nascimento");
+		System.out.println("3) Altura");
+		System.out.println("Informe o campo para ser editado: ");
+		int opcao = tec.nextInt();
+		
+		switch(opcao) {
+		case 1:
+			System.out.println("---EDITAR O NOME DA PESSOA---");
+			System.out.println("Informe o novo nome para editar: ");
+			pessoa.setNome(tec.next());
+			
+			pessoa.setAnoDeNascimento(pessoas.get(iDPessoa).getAnoDeNascimento());
+			pessoa.setAltura(pessoas.get(iDPessoa).getAltura());
+			pessoa.setNomeDopais(pessoas.get(iDPessoa).getNomeDopais());
+			pessoa.setSiglaDopais(pessoas.get(iDPessoa).getSiglaDopais());
+			pessoa.setNomeDoestado(pessoas.get(iDPessoa).getNomeDoestado());
+			pessoa.setSiglaDoestado(pessoas.get(iDPessoa).getSiglaDoestado());
+			pessoa.setNomeDacidade(pessoas.get(iDPessoa).getNomeDacidade());
+			pessoa.setBairro(pessoas.get(iDPessoa).getBairro());
+			pessoa.setRua(pessoas.get(iDPessoa).getRua());
+			pessoa.setNumero(pessoas.get(iDPessoa).getNumero());
+			pessoa.setComplemento(pessoas.get(iDPessoa).getComplemento());
+			
+			pessoas.set(iDPessoa, pessoa);
+			
+			break;
+			
+		case 2:
+			System.out.println("--- EDITAR ANO DE NASCIMENTO ---");
+			System.out.println("Informe o novo ano de nascimento: ");
+			pessoa.setAnoDeNascimento(tec.nextInt());
+			
+			pessoa.setNome(pessoas.get(iDPessoa).getNome());
+			pessoa.setAltura(pessoas.get(iDPessoa).getAltura());
+			pessoa.setNomeDopais(pessoas.get(iDPessoa).getNomeDopais());
+			pessoa.setSiglaDopais(pessoas.get(iDPessoa).getSiglaDopais());
+			pessoa.setNomeDoestado(pessoas.get(iDPessoa).getNomeDoestado());
+			pessoa.setSiglaDoestado(pessoas.get(iDPessoa).getSiglaDoestado());
+			pessoa.setNomeDacidade(pessoas.get(iDPessoa).getNomeDacidade());
+			pessoa.setBairro(pessoas.get(iDPessoa).getBairro());
+			pessoa.setRua(pessoas.get(iDPessoa).getRua());
+			pessoa.setNumero(pessoas.get(iDPessoa).getNumero());
+			pessoa.setComplemento(pessoas.get(iDPessoa).getComplemento());
+			
+			pessoas.set(iDPessoa, pessoa);
+			
+			break;
+			
+		case 3:
+			System.out.println("--- EDITAR ALTURA ---");
+			System.out.println("Informe a nova altura: ");
+			pessoa.setAltura(tec.nextDouble());
+			
+			pessoa.setNome(pessoas.get(iDPessoa).getNome());
+			pessoa.setAnoDeNascimento(pessoas.get(iDPessoa).getAnoDeNascimento());
+			pessoa.setNomeDopais(pessoas.get(iDPessoa).getNomeDopais());
+			pessoa.setSiglaDopais(pessoas.get(iDPessoa).getSiglaDopais());
+			pessoa.setNomeDoestado(pessoas.get(iDPessoa).getNomeDoestado());
+			pessoa.setSiglaDoestado(pessoas.get(iDPessoa).getSiglaDoestado());
+			pessoa.setNomeDacidade(pessoas.get(iDPessoa).getNomeDacidade());
+			pessoa.setBairro(pessoas.get(iDPessoa).getBairro());
+			pessoa.setRua(pessoas.get(iDPessoa).getRua());
+			pessoa.setNumero(pessoas.get(iDPessoa).getNumero());
+			pessoa.setComplemento(pessoas.get(iDPessoa).getComplemento());
+			
+			pessoas.set(iDPessoa, pessoa);
+			
+			break;
+			
+		}
+	
+		return pessoas;
+	}
 
+	public void excluirPessoa(List<Pessoa> pessoas) {
+		
+		listarPessoas(pessoas);
+		
+		if(pessoas.isEmpty()) {
+			return;
+		}
+		
+		System.out.println("--- EXCLUIR PESSOA ---");
+		
+		System.out.print("Informe o Id da pessoa para excluir: ");
+		int iDPessoa = tec.nextInt();
+		
+		if(pessoas.size() < iDPessoa) {
+			System.out.println("Pessoa não cadastrada");
+			return;
+		}
+		
+		pessoas.remove(iDPessoa);
+		
+		
+	}
+	
+	
 }
+	
+
