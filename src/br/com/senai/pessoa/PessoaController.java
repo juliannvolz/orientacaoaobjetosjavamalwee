@@ -19,19 +19,6 @@ public class PessoaController {
 		return tec.nextInt();	
 	}
 	
-	public void menu() {
-		System.out.println("\n---------- MENU ------------");
-		System.out.println("|1) Cadastrar pessoa          ");
-		System.out.println("|2) Listar pessoas cadastradas");
-		System.out.println("|3) Cadastrar produtos");
-		System.out.println("|4) Listar produtos");
-		System.out.println("|5) Editar produto");
-		System.out.println("|6) Excluir produto");
-		System.out.println("|7) Editar pessoa");
-		System.out.println("|8) Excluir pessoa");
-		System.out.println("|9) Sair do sistema           ");
-		System.out.println("------------------------------");
-	}
 	
 	public Pessoa cadastrarPessoa() {
 		Pessoa pessoa = new Pessoa();
@@ -229,7 +216,39 @@ public class PessoaController {
 		
 	}
 	
-	
+	public void menu(List <Pessoa> pessoas) {
+		System.out.println("\n---------- MENU ------------");
+		System.out.println("|1) Cadastrar pessoa          ");
+		System.out.println("|2) Listar pessoas cadastradas");
+		System.out.println("|3) Editar pessoa");
+		System.out.println("|4) Excluir pessoa");
+		System.out.println("------------------------------");
+		
+		int opcao = leOpcao();
+		
+		switch(opcao) {
+		case 1:
+			cadastrarPessoa();
+			break;
+			
+		case 2:
+			listarPessoas(pessoas);
+			break;
+			
+		case 3:
+			editarPessoa(pessoas);
+			break;
+			
+		case 4:
+			excluirPessoa(pessoas);
+			break;
+			
+		}
+	}
+		
 }
+	
+	
+
 	
 

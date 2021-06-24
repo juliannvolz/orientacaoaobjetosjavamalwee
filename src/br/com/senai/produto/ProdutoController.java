@@ -136,6 +136,37 @@ private Scanner tec;
 		
 		produtos.remove(idProduto);
 	}
+		
+		public void menu(List <Produto> produtos) {
+			System.out.println("\n---------- MENU ------------");
+			System.out.println("|1) Cadastrar produtos");
+			System.out.println("|2) Listar produtos");
+			System.out.println("|3) Editar produto");
+			System.out.println("|4) Excluir produto");
+			System.out.println("------------------------------");
+			
+			int opcao = leOpcao();
+			
+			switch(opcao) {
+			case 1:
+				cadastrarPessoa();
+				break;
+				
+			case 2:
+				listarPessoas(pessoas);
+				break;
+				
+			case 3:
+				editarPessoa(pessoas);
+				break;
+				
+			case 4:
+				excluirPessoa(pessoas);
+				break;
+				
+			}
+			
+	}
 	
 }
 

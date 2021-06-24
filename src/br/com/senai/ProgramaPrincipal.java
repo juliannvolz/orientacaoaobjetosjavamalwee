@@ -4,16 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.com.senai.loja.Venda;
+import br.com.senai.loja.VendaController;
 import br.com.senai.pessoa.Pessoa;
 import br.com.senai.pessoa.PessoaController;
 import br.com.senai.produto.Produto;
 import br.com.senai.produto.ProdutoController;
 
 public class ProgramaPrincipal {
+	
+	private Scanner tec;
+	
+	public ProgramaPrincipal() {
+		tec = new Scanner(System.in);	
+	}
+	
+	public int leOpcao() {
+		System.out.print("> ");
+		return tec.nextInt();	
+	}
 
 	public static void main(String[] args) {
 		List<Pessoa> pessoas = new ArrayList<>();
 		List<Produto> produtos = new ArrayList<>();
+		List<Venda> vendas = new ArrayList<Venda>();
+		
 		
 		Produto produto = new Produto(
 				"Abacate",
@@ -25,51 +40,36 @@ public class ProgramaPrincipal {
 		
 		PessoaController pessoaController = new PessoaController();
 		ProdutoController produtoController = new ProdutoController();
+		VendaController vendaController = new VendaController();
 		
 		boolean sair = false;
 		
 		
 		do {
 			
-			pessoaController.menu();
+			System.out.println("--- MENU ---");
+			System.out.println("1) Registro de pessoas");
+			System.out.println("2) Registro de produtos");
+			System.out.println("3) Registro de vendas");
+			System.out.println("0) Sair do sistema");
 			
 			
 			int opcao = pessoaController.leOpcao();
 			
 			switch(opcao) {
 				case 1:
-					pessoas.add(pessoaController.cadastrarPessoa());
+					pessoaController.menu(pessoas);
 					break;
-			
+				
 				case 2:
-					pessoaController.listarPessoas(pessoas);
+					produtoController.menu(produtos);
 					break;
 					
 				case 3:
-					produtos.add(produtoController.cadastrarProduto());
+					vendaController.menu(vendas);
 					break;
 					
-				case 4: 
-					produtoController.listarProduto(produtos);
-					break;
-					
-				case 5:
-					produtoController.editarProduto(produtos);
-					break;
-				
-				case 6:
-					produtoController.excluirProduto(produtos);
-					break;
-					
-				case 7:
-					pessoaController.editarPessoa(pessoas);
-					break;
-					
-				case 8:
-					pessoaController.excluirPessoa(pessoas);
-					break;
-					
-				case 9:
+				case 0:
 					sair = true;
 					break;
 			
@@ -80,7 +80,15 @@ public class ProgramaPrincipal {
 		}while(!sair);
 		
 		System.out.println("Sistema finalizado!");
+		
+	
 
 	}
 
+		
 }
+
+
+
+
+
