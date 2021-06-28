@@ -1,5 +1,6 @@
 package br.com.senai.loja;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,6 +14,8 @@ public class VendaController {
 	private Scanner tec;
 	private ProdutoController produtoController;
 	private PessoaController pessoaController;
+	
+	List<Venda> vendas = new ArrayList<>();
 	
 	public VendaController() {
 		tec = new Scanner(System.in);
@@ -70,7 +73,7 @@ public class VendaController {
 		venda.setPessoa(pessoa);
 		
 		System.out.println("Informe o Id do produto: ");
-		int idProduto = tec.nextInt();
+		int idProduto = tec.nextInt() - 1;
 		
 		produto.setNomeDoProduto(produtos.get(idProduto).getNomeDoProduto());
 		produto.setQuantidadeDoProduto(produtos.get(idProduto).getQuantidadeDoProduto());
@@ -87,12 +90,26 @@ public class VendaController {
 		return venda;
 	}
 		
-		public void menu(List <Venda> vendas) {
+		public void menu(List <Venda> vendas, List<Produto> produtos, List<Pessoa> pessoas) {
 			System.out.println("\n---------- MENU ------------");
 			System.out.println("|1) Cadastrar venda          ");
 			System.out.println("|2) Listar venda");
 			System.out.println("------------------------------");
 			
+			int opcao = leOpcao();
+			
+			switch(opcao) {
+			case 1:
+				vendas.add(cadastrarVenda(produtos, pessoas));
+				break;
+				
+			case 2:
+				listarVenda(vendas);
+				break;
+				
+			default:
+				break;
+			}
 			
 	}
 	

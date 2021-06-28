@@ -66,7 +66,7 @@ public class ProgramaPrincipal {
 					break;
 					
 				case 3:
-					vendaController.menu(vendas);
+					vendaController.menu(vendas, produtos, pessoas);
 					break;
 					
 				case 0:

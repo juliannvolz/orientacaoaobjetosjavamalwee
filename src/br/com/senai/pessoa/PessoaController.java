@@ -228,7 +228,7 @@ public class PessoaController {
 		
 		switch(opcao) {
 		case 1:
-			cadastrarPessoa();
+			pessoas.add(cadastrarPessoa());
 			break;
 			
 		case 2:

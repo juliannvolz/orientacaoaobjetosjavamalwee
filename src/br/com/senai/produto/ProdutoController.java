@@ -8,6 +8,7 @@ import br.com.senai.produto.Produto;
 public class ProdutoController {
 	
 private Scanner tec;
+private Object pessoas;
 	
 	public ProdutoController() {
 		tec = new Scanner(System.in);	
@@ -137,6 +138,11 @@ private Scanner tec;
 		produtos.remove(idProduto);
 	}
 		
+	public int leOpcao() {
+		System.out.print("> ");
+		return tec.nextInt();	
+	}
+	
 		public void menu(List <Produto> produtos) {
 			System.out.println("\n---------- MENU ------------");
 			System.out.println("|1) Cadastrar produtos");
@@ -149,26 +155,29 @@ private Scanner tec;
 			
 			switch(opcao) {
 			case 1:
-				cadastrarPessoa();
+			produtos.add(cadastrarProduto());
 				break;
 				
 			case 2:
-				listarPessoas(pessoas);
+				listarProduto(produtos);
 				break;
 				
 			case 3:
-				editarPessoa(pessoas);
+				editarProduto(produtos);
 				break;
 				
 			case 4:
-				excluirPessoa(pessoas);
+				excluirProduto(produtos);
 				break;
 				
 			}
 			
 	}
+
+
+		}
 	
-}
+
 
 
 
